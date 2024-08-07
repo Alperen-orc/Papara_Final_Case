@@ -1,0 +1,88 @@
+1. Kullanıcı Tablosu (Users)
+Kullanıcıların bilgilerini saklar.
+
+Id (int, primary key)
+FirstName (string)
+LastName (string)
+Email (string, unique)
+PasswordHash (string)
+Role (string) - "User" veya "Admin"
+Status (bool) - Aktif/Pasif
+WalletBalance (decimal) - Dijital cüzdan bakiyesi
+PointBalance (decimal) - Kullanıcının puan bakiyesi
+CreatedAt (DateTime)
+UpdatedAt (DateTime)
+2. Kategori Tablosu (Categories)
+Ürün kategorilerini saklar.
+
+Id (int, primary key)
+Name (string)
+Url (string)
+Tags (string)
+CreatedAt (DateTime)
+UpdatedAt (DateTime)
+3. Ürün Tablosu (Products)
+Satıştaki dijital ürünleri saklar.
+
+Id (int, primary key)
+Name (string)
+Description (string)
+Price (decimal)
+IsActive (bool) - Ürün aktif mi?
+StockQuantity (int) - Stok adedi
+PointPercentage (decimal) - Satıştan kazanılan puan yüzdesi
+MaxPoint (decimal) - Maksimum kazanılabilecek puan
+CreatedAt (DateTime)
+UpdatedAt (DateTime)
+4. Ürün-Kategori İlişki Tablosu (ProductCategories)
+Ürünlerin kategorilerini ilişkilendirir.
+
+ProductId (int, foreign key referencing Products)
+CategoryId (int, foreign key referencing Categories)
+5. Sipariş Tablosu (Orders)
+Kullanıcı siparişlerini saklar.
+
+Id (int, primary key)
+UserId (int, foreign key referencing Users)
+TotalAmount (decimal) - Sepet tutarı
+CouponCode (string, nullable) - Kullanılan kupon kodu
+CouponAmount (decimal, nullable) - Kupon tutarı
+UsedPoints (decimal, nullable) - Kullanılan puan tutarı
+CreatedAt (DateTime)
+UpdatedAt (DateTime)
+6. Sipariş Detay Tablosu (OrderDetails)
+Sipariş içerisindeki ürünlerin detaylarını saklar.
+
+Id (int, primary key)
+OrderId (int, foreign key referencing Orders)
+ProductId (int, foreign key referencing Products)
+Quantity (int) - Ürün adedi
+Price (decimal) - Ürün fiyatı
+CreatedAt (DateTime)
+UpdatedAt (DateTime)
+7. Kupon Tablosu (Coupons)
+Kullanılabilir kuponları saklar.
+
+Id (int, primary key)
+Code (string, unique)
+Amount (decimal) - Kupon tutarı
+IsActive (bool) - Kupon aktif mi?
+ExpiryDate (DateTime) - Kupon geçerlilik tarihi
+CreatedAt (DateTime)
+UpdatedAt (DateTime)
+8. Kullanıcı Kupon Tablosu (UserCoupons)
+Kullanıcıların kupon kullanım bilgilerini saklar.
+
+Id (int, primary key)
+UserId (int, foreign key referencing Users)
+CouponId (int, foreign key referencing Coupons)
+UsedAt (DateTime, nullable) - Kullanım tarihi
+9. Puan Hareketleri Tablosu (PointTransactions)
+Kullanıcıların puan kazanma ve harcama hareketlerini saklar.
+
+Id (int, primary key)
+UserId (int, foreign key referencing Users)
+OrderId (int, foreign key referencing Orders, nullable) - Hangi siparişten geldiği
+TransactionType (string) - "Earned" veya "Spent"
+Points (decimal) - İşlem miktarı
+CreatedAt (DateTime)

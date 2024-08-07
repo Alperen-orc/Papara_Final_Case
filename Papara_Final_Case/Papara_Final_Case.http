@@ -1,0 +1,6 @@
+@Papara_Final_Case_HostAddress = http://localhost:5206
+
+GET {{Papara_Final_Case_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
