@@ -12,8 +12,8 @@ using Papara.Data.DatabaseContext;
 namespace Papara.Data.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240804143135_Create_DatabaseTable")]
-    partial class Create_DatabaseTable
+    [Migration("20240808160148_UpdateProductCategory")]
+    partial class UpdateProductCategory
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -230,21 +230,26 @@ namespace Papara.Data.Migrations
 
             modelBuilder.Entity("Papara.Data.Entities.ProductCategory", b =>
                 {
-                    b.Property<long>("ProductId")
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<long>("CategoryId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("Id")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("InsertDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("ProductId", "CategoryId");
+                    b.Property<long>("ProductId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductCategories");
                 });

@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace Papara.Business.Cqrs.CqrsCommand
 {
-    public class ProductCategory
-    {
-    }
+
 }

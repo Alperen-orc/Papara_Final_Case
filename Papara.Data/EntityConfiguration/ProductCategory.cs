@@ -13,20 +13,19 @@ namespace Papara.Data.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<ProductCategory> builder)
         {
-            // Composite key for ProductCategory
-            builder.HasKey(pc => new { pc.ProductId, pc.CategoryId });
+            builder.HasKey(pc => pc.Id);
 
+            // Foreign key for Product
             builder.HasOne(pc => pc.Product)
-                .WithMany(p => p.ProductCategories)
-                .HasForeignKey(pc => pc.ProductId)
-                .IsRequired(true)
-                .OnDelete(DeleteBehavior.Cascade);
+                   .WithMany(p => p.ProductCategories)
+                   .HasForeignKey(pc => pc.ProductId)
+                   .OnDelete(DeleteBehavior.Cascade);
 
+            // Foreign key for Category
             builder.HasOne(pc => pc.Category)
-                .WithMany(c => c.ProductCategories)
-                .HasForeignKey(pc => pc.CategoryId)
-                .IsRequired(true)
-                .OnDelete(DeleteBehavior.Cascade);
+                   .WithMany(c => c.ProductCategories)
+                   .HasForeignKey(pc => pc.CategoryId)
+                   .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

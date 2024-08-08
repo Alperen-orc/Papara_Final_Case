@@ -16,7 +16,7 @@ namespace Papara.Data.Entities;
     public decimal PointPercentage { get; set; }
     public decimal MaxPoint { get; set; }
     public bool IsActive { get; set; }
-    public virtual ICollection<ProductCategory> ProductCategories { get; set; }
-    public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+    public virtual ICollection<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 }
 

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Papara.Schema.Request
+namespace Papara.Schema.Response
 {
-    public class Coupon
+    public class CouponResponse
     {
     }
 }

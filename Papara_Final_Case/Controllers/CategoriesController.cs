@@ -34,5 +34,21 @@ namespace Papara.Api.Controllers
             var result = await mediator.Send(operation);
             return result;
         }
+
+        [HttpPut("{categoryId}")]
+        public async Task<BaseResponse> Put(long categoryId, [FromBody] CategoryRequest value)
+        {
+            var query = new UpdateCategoryCommand(categoryId, value);
+            var result = await mediator.Send(query);
+            return result;
+        }
+
+        [HttpDelete("{categoryId}")]
+        public async Task<BaseResponse> Delete(long categoryId)
+        {
+            var query = new DeleteCategoryCommand(categoryId);
+            var result = await mediator.Send(query);
+            return result;
+        }
     }
 }

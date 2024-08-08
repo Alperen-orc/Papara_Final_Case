@@ -25,9 +25,9 @@ namespace Papara.Data.GenericRepository
             }
         }
 
-        public Task<List<TEntity>> GetAll()
+        public async Task<List<TEntity>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _context.Set<TEntity>().ToListAsync();
         }
 
         public async Task<TEntity> GetById(long Id)

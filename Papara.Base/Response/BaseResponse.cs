@@ -7,6 +7,12 @@
         public DateTime ServerDate { get; set; } = DateTime.UtcNow;
         public Guid ReferenceNumber { get; set; } = Guid.NewGuid();
 
+        public BaseResponse()
+        {
+            IsSuccess = true;
+            Message = "Success";
+        }
+
         public BaseResponse(bool isSuccess, string message)
         {
             IsSuccess = isSuccess;

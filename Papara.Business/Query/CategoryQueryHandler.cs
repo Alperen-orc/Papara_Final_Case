@@ -5,11 +5,7 @@ using Papara.Business.Cqrs.CqrsQuery;
 using Papara.Data.Entities;
 using Papara.Data.UnitOfWork;
 using Papara.Schema.Response;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Papara.Business.Query
 {

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Papara.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Create_DatabaseTable : Migration
+    public partial class UpdateProductCategory : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -89,14 +89,15 @@ namespace Papara.Data.Migrations
                 name: "ProductCategories",
                 columns: table => new
                 {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<long>(type: "bigint", nullable: false),
                     CategoryId = table.Column<long>(type: "bigint", nullable: false),
-                    Id = table.Column<long>(type: "bigint", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductCategories", x => new { x.ProductId, x.CategoryId });
+                    table.PrimaryKey("PK_ProductCategories", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ProductCategories_Categories_CategoryId",
                         column: x => x.CategoryId,
@@ -250,6 +251,11 @@ namespace Papara.Data.Migrations
                 name: "IX_ProductCategories_CategoryId",
                 table: "ProductCategories",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductCategories_ProductId",
+                table: "ProductCategories",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserCoupons_CouponId",

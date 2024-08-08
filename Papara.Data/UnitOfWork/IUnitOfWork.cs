@@ -12,5 +12,6 @@ namespace Papara.Data.UnitOfWork
     {
         Task SaveDatabase();
         IGenericRepository<Category> CategoryRepository { get; }
+        IGenericRepository<Product> ProductRepository { get; }
     }
 }

@@ -14,12 +14,14 @@ namespace Papara.Data.UnitOfWork
     {
         private readonly Context _context;
         public IGenericRepository<Category> CategoryRepository { get; }
+        public IGenericRepository<Product> ProductRepository { get; }
 
         public UnitOfWork(Context context)
         {
             _context = context;
 
             CategoryRepository=new GenericRepository<Category>(_context);
+            ProductRepository=new GenericRepository<Product>(_context);
         }
 
         public void Dispose()

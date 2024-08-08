@@ -39,14 +39,21 @@ namespace Papara.Business.Command
             return new BaseResponse<CategoryResponse>(response);
         }
 
-        public Task<BaseResponse> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<BaseResponse> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var mappedCategory=mapper.Map<CategoryRequest, Category>(request.Request);
+            mappedCategory.Id = request.CategoryId;
+            unitOfWork.CategoryRepository.Update(mappedCategory);
+            await unitOfWork.SaveDatabase();
+            return new BaseResponse();
+
         }
 
-        public Task<BaseResponse> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<BaseResponse> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            await unitOfWork.CategoryRepository.Delete(request.CategoryId);
+            await unitOfWork.SaveDatabase();
+            return new BaseResponse();
         }
     }
 }
