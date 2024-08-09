@@ -22,11 +22,12 @@ namespace Papara.Data.EntityConfiguration
             builder.Property(x => x.MaxPoint).IsRequired(true).HasColumnType("decimal(18,2)");
             builder.Property(x => x.InsertDate).IsRequired(true);
 
-            builder.HasMany(x => x.ProductCategories)
-                .WithOne(x => x.Product)
-                .HasForeignKey(x => x.ProductId)
-                .IsRequired(true)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasKey(p => p.Id);
+
+            builder.HasOne(p => p.Category)
+                   .WithMany(c => c.Products)
+                   .HasForeignKey(p => p.CategoryId)
+                   .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(x => x.OrderDetails)
                 .WithOne(x => x.Product)

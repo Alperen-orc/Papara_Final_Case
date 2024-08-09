@@ -18,11 +18,11 @@ namespace Papara.Data.EntityConfiguration
             builder.Property(x => x.Tags).HasMaxLength(200);
             builder.Property(x => x.InsertDate).IsRequired(true);
 
-            builder.HasMany(x => x.ProductCategories)
-                .WithOne(x => x.Category)
-                .HasForeignKey(x => x.CategoryId)
-                .IsRequired(true)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasKey(c => c.Id);
+
+            builder.HasMany(c => c.Products)
+                   .WithOne(p => p.Category)
+                   .HasForeignKey(p => p.CategoryId);
         }
     }
 }

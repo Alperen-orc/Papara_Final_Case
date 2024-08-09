@@ -12,6 +12,6 @@ namespace Papara.Data.Entities;
         public string Name { get; set; } = string.Empty;
         public string Url { get; set; } = string.Empty;
         public string Tags { get; set; } = string.Empty;
-    public virtual ICollection<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
+        public virtual ICollection<Product> Products { get; set; }=new List<Product>();
 }
 

@@ -19,21 +19,8 @@ namespace Papara.Business.Mapper
             CreateMap<CategoryRequest, Category>();
 
             // Product Mappings
-            CreateMap<Product, ProductResponse>()
-                .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.ProductCategories.Select(pc => new CategoryResponse
-                {
-                    Id = pc.Category.Id,
-                    Name = pc.Category.Name
-                })));
-
-            CreateMap<ProductRequest, Product>()
-                .ForMember(dest => dest.ProductCategories, opt => opt.Ignore());
-
-            // ProductCategory Mappings
-            CreateMap<ProductCategory, ProductCategoryResponse>()
-                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
-                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
-            CreateMap<ProductCategoryRequest, ProductCategory>();
+            CreateMap<Product, ProductResponse>();
+            CreateMap<ProductRequest, Product>();
         }
     }
 }
