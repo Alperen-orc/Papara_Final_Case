@@ -20,9 +20,9 @@ namespace Papara.Data.EntityConfiguration
 
             builder.HasKey(c => c.Id);
 
-            builder.HasMany(c => c.Products)
-                   .WithOne(p => p.Category)
-                   .HasForeignKey(p => p.CategoryId);
+            builder.HasMany(c => c.ProductCategories)
+                   .WithOne(pc => pc.Category)
+                   .HasForeignKey(pc => pc.CategoryId);
         }
     }
 }

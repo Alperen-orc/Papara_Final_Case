@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Papara.Data.DatabaseContext;
 
@@ -11,9 +12,11 @@ using Papara.Data.DatabaseContext;
 namespace Papara.Data.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240810120532_UpdateRelationProductCategory")]
+    partial class UpdateRelationProductCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,7 +53,7 @@ namespace Papara.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Papara.Data.Entities.Coupon", b =>
@@ -80,7 +83,7 @@ namespace Papara.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Coupons", (string)null);
+                    b.ToTable("Coupons");
                 });
 
             modelBuilder.Entity("Papara.Data.Entities.Order", b =>
@@ -115,7 +118,7 @@ namespace Papara.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Papara.Data.Entities.OrderDetail", b =>
@@ -147,7 +150,7 @@ namespace Papara.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetails", (string)null);
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("Papara.Data.Entities.PointTransaction", b =>
@@ -181,7 +184,7 @@ namespace Papara.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PointTransactions", (string)null);
+                    b.ToTable("PointTransactions");
                 });
 
             modelBuilder.Entity("Papara.Data.Entities.Product", b =>
@@ -222,7 +225,7 @@ namespace Papara.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Papara.Data.Entities.ProductCategory", b =>
@@ -248,7 +251,7 @@ namespace Papara.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductCategories", (string)null);
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("Papara.Data.Entities.User", b =>
@@ -300,7 +303,7 @@ namespace Papara.Data.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Papara.Data.Entities.UserCoupon", b =>
@@ -329,7 +332,7 @@ namespace Papara.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserCoupons", (string)null);
+                    b.ToTable("UserCoupons");
                 });
 
             modelBuilder.Entity("Papara.Data.Entities.Order", b =>

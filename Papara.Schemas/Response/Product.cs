@@ -16,7 +16,7 @@ namespace Papara.Schema.Response
         public decimal PointPercentage { get; set; }
         public decimal MaxPoint { get; set; }
         public bool IsActive { get; set; }
-        public long CategoryId {  get; set; } 
+        public List<CategoryResponse> Categories { get; set; } 
 
     }
 }

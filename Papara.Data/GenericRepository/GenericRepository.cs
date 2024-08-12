@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Papara.Base.Entity;
 using Papara.Data.DatabaseContext;
+using Papara.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,5 +48,10 @@ namespace Papara.Data.GenericRepository
         {
             _context.Set<TEntity>().Update(entity);
         }
+        public async Task<TEntity> FindByEmailAsync(string email)
+        {
+            return await _context.Set<TEntity>().FirstOrDefaultAsync(e => EF.Property<string>(e, "Email") == email);
+        }
+
     }
 }

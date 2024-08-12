@@ -13,5 +13,9 @@ namespace Papara.Data.GenericRepository
         Task<List<TEntity>> GetAll();
         Task Delete(long Id);
         void Update(TEntity entity);
+        Task<TEntity> FindByEmailAsync(string email);
+
+
+
     }
 }

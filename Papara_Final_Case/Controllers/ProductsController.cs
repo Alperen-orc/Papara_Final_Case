@@ -6,11 +6,14 @@ using Papara.Schema.Response;
 using Papara.Business.Query;
 using Papara.Business.Cqrs.CqrsCommand;
 using Papara.Schema.Request;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Papara.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles ="Admin")]
+
     public class ProductsController : ControllerBase
     {
         private readonly IMediator mediator;

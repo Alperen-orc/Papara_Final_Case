@@ -8,5 +8,7 @@ namespace Papara.Schema.Request
 {
     public class OrderDetailRequest
     {
+       public long ProductId { get; set; }
+       public int Quantity { get; set; }
     }
 }

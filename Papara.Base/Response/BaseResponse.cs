@@ -1,4 +1,6 @@
-﻿namespace Papara.Base.Response
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Papara.Base.Response
 {
     public class BaseResponse
     {
@@ -11,6 +13,12 @@
         {
             IsSuccess = true;
             Message = "Success";
+        }
+
+        public BaseResponse(string message)
+        {
+            IsSuccess = true;
+            Message = message;
         }
 
         public BaseResponse(bool isSuccess, string message)

@@ -23,6 +23,8 @@ namespace Papara.Data.DatabaseContext
         public DbSet<Coupon> Coupons { get; set; }
         public DbSet<UserCoupon> UserCoupons { get; set; }
         public DbSet<PointTransaction> PointTransactions { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; } 
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
